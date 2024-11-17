@@ -17,6 +17,12 @@ $routes->get('delete-module/(:num)', 'Modules::delete/$1');
 $routes->get('get-module-by-id/(:num)', 'Modules::getByID/$1');
 
 /*
+ * Pages
+ */
+$routes->match(['get', 'post'], 'login', 'Pages::login');
+$routes->get('logout', 'Pages::logout');
+
+/*
  * Permissions
  */
 $routes->get('permissions', 'Permissions::index');

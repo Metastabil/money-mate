@@ -14,6 +14,9 @@ class Pages extends BaseController {
         service('request')->setLocale('de');
     }
 
+    /**
+     * @return RedirectResponse|string
+     */
     public function login() :RedirectResponse|string {
         $data = [
             'title' => esc(lang('App.DE.Pages.Titles.Login'))
@@ -44,5 +47,14 @@ class Pages extends BaseController {
         }
 
         return view('Pages/Login', $data);
+    }
+
+    /**
+     * @return RedirectResponse
+     */
+    public function logout() :RedirectResponse {
+        session()->remove('user');
+
+        return redirect()->route('login');
     }
 }
